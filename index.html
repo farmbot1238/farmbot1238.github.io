@@ -1065,7 +1065,7 @@
     </div>
     <button onclick="openInNewTabFromError()" style="background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.1));border:1px solid rgba(255,215,0,0.4);color:#FFD700;padding:12px 28px;border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;">↗ فتح في تبويب جديد</button>
   </div>
-  <iframe id="mainIframe" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin" allow="fullscreen" style="flex:1;width:100%;border:none;opacity:0;"></iframe>
+  <iframe id="mainIframe" sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-modals" allow="fullscreen" style="flex:1;width:100%;border:none;opacity:0;"></iframe>
 </div>
 
 <script>
@@ -1143,7 +1143,7 @@
     if (preloadIframeInstance) return;
     preloadIframeInstance = document.createElement('iframe');
     preloadIframeInstance.style.display = 'none';
-    preloadIframeInstance.setAttribute('sandbox', 'allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin');
+    preloadIframeInstance.setAttribute('sandbox', 'allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-modals');
     document.body.appendChild(preloadIframeInstance);
   }
   function prefetchIframe(url) {
