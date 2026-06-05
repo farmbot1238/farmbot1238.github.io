@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://my-achievement-buddy.lovable.app">
 <link rel="preconnect" href="https://spiritual-boost.lovable.app">
 <link rel="preconnect" href="https://unified-login-pal.lovable.app">
-<link rel="preconnect" href="https://mind-trek-center.lovable.app">
+<link rel="preconnect" href="https://cooperate-and-conquer.lovable.app">
 <link rel="preconnect" href="https://anonymous-confessions-space.lovable.app">
 <link rel="preconnect" href="https://notebooklm.google.com">
 <link rel="preconnect" href="https://docs.google.com">
@@ -622,20 +622,6 @@
 
   .sidebar-link-icon { font-size: 1.1rem; flex-shrink: 0; }
 
-  /* Special gold link for "جولات دراسية" */
-  .sidebar-link.gold-link {
-    color: var(--gold);
-    background: rgba(255,215,0,0.05);
-  }
-  .sidebar-link.gold-link:hover {
-    background: rgba(255,215,0,0.15);
-    color: var(--gold-light);
-  }
-  .sidebar-link.gold-link.active {
-    background: rgba(255,215,0,0.2);
-    color: var(--gold);
-  }
-
   /* Overlay */
   .sidebar-overlay {
     display: none;
@@ -1172,13 +1158,9 @@
       <div class="sidebar-link" data-url="https://my-achievement-buddy.lovable.app" data-title="الإنجاز" onclick="loadFrame(this)">
         <span class="sidebar-link-icon">🏆</span> الإنجاز
       </div>
-      <!-- الدردشة الدراسية متوقفة مؤقتاً -->
-      <div class="sidebar-link" onclick="showChatTemporarilyStopped()">
-        <span class="sidebar-link-icon">💬</span> دردشة دراسية (متوقفة مؤقتاً)
-      </div>
-      <!-- جولات دراسية -->
-      <div class="sidebar-link gold-link" data-url="https://mind-trek-center.lovable.app" data-title="جولات دراسية" onclick="loadFrame(this)">
-        <span class="sidebar-link-icon">🏆</span> جولات دراسية
+      <!-- الدردشة الدراسية (مع القوانين مرة واحدة) -->
+      <div class="sidebar-link" data-chat="true" onclick="openChatWithRules(this)">
+        <span class="sidebar-link-icon">💬</span> دردشة دراسية
       </div>
       <!-- أنا مجهول -->
       <div class="sidebar-link" data-url="https://anonymous-confessions-space.lovable.app" data-title="أنا مجهول" onclick="loadFrame(this)">
@@ -1290,6 +1272,7 @@
 <script>
   // ================== STORAGE & AUTO REDIRECT ==================
   const STORAGE_KEY = 'madarik_selected_year';
+  const CHAT_RULES_KEY = 'madarik_chat_rules_accepted';
 
   function selectYear(year) {
     if (year === '2009') {
@@ -1475,9 +1458,69 @@
     closeSidebar();
   }
 
-  // Temporary stop for chat
-  function showChatTemporarilyStopped() {
-    alert("⚠️ الدردشة الدراسية متوقفة مؤقتاً سيتم إصلاحها قريباً. جرب الجولات الدراسية بدلاً من ذلك.");
+  // ================== CHAT RULES ONCE ==================
+  function openChatWithRules(linkEl) {
+    closeSidebar();
+    const accepted = localStorage.getItem(CHAT_RULES_KEY);
+    if (accepted === 'true') {
+      loadFrameFromUrlAndTitle('https://cooperate-and-conquer.lovable.app', 'دردشة دراسية', linkEl);
+      return;
+    }
+    pendingChatLink = linkEl;
+    document.getElementById('chatRulesModal').style.display = 'flex';
+  }
+
+  function loadFrameFromUrlAndTitle(url, title, linkEl) {
+    if (!linkEl) return;
+    if (currentLink) currentLink.classList.remove('active');
+    linkEl.classList.add('active');
+    currentLink = linkEl;
+    const viewer = document.getElementById('fullViewer');
+    const iframe = document.getElementById('mainIframe');
+    const titleEl = document.getElementById('viewerTitle');
+    const spinner = document.getElementById('viewerSpinner');
+    const errorBox = document.getElementById('iframeError');
+    titleEl.textContent = title;
+    spinner.style.display = 'block';
+    iframe.style.opacity = '0';
+    errorBox.style.display = 'none';
+    if (currentTimeout) clearTimeout(currentTimeout);
+    iframe.onload = null;
+    iframe.src = 'about:blank';
+    setTimeout(() => { iframe.src = url; }, 10);
+    viewer.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    currentTimeout = setTimeout(() => {
+      if (iframe.style.opacity !== '1') {
+        spinner.style.display = 'none';
+        errorBox.style.display = 'flex';
+        errorBox.dataset.url = url;
+        errorBox.dataset.title = title;
+        if (currentTimeout) clearTimeout(currentTimeout);
+        currentTimeout = null;
+      }
+    }, 5000);
+    iframe.onload = function() {
+      if (currentTimeout) clearTimeout(currentTimeout);
+      currentTimeout = null;
+      spinner.style.display = 'none';
+      iframe.style.opacity = '1';
+      errorBox.style.display = 'none';
+    };
+  }
+
+  let pendingChatLink = null;
+  function acceptChat() {
+    localStorage.setItem(CHAT_RULES_KEY, 'true');
+    document.getElementById('chatRulesModal').style.display = 'none';
+    if (pendingChatLink) {
+      loadFrameFromUrlAndTitle('https://cooperate-and-conquer.lovable.app', 'دردشة دراسية', pendingChatLink);
+      pendingChatLink = null;
+    }
+  }
+  function declineChat() {
+    document.getElementById('chatRulesModal').style.display = 'none';
+    pendingChatLink = null;
   }
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -1489,5 +1532,45 @@
     }
   });
 </script>
+
+<!-- =================== CHAT RULES MODAL =================== -->
+<div id="chatRulesModal" style="display:none;position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;">
+  <div style="background:var(--surface);border:1px solid rgba(255,215,0,0.25);border-radius:24px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;">
+    <div style="height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:24px 24px 0 0;"></div>
+    <div style="padding:28px 28px 24px;">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div style="font-size:2.8rem;margin-bottom:10px;">⚖️</div>
+        <div style="font-family:'Tajawal',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">قوانين الدردشة الدراسية</div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-top:6px;">اقرأ القوانين قبل الدخول</div>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:14px;">
+        <div style="font-size:0.82rem;font-weight:700;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>💬</span> قوانين قسم الشات</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع منعًا باتًا استخدام الشات للأحاديث الجانبية.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>الشات للأسئلة والاستفسارات الدراسية فقط.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع افتعال المشاكل أو النقاشات الاستفزازية.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يجب احترام جميع الأعضاء والمشرفين.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع نشر محتوى غير مناسب أو روابط عشوائية.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يمنع إرسال الرسائل المتكررة (Spam).</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع انتحال شخصية أي عضو أو مشرف.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:#fca5a5;line-height:1.5;font-weight:600;"><span style="color:#ef4444;flex-shrink:0;">•</span>أي مخالفة قد تؤدي إلى تحذير، تايم اوت، أو حظر.</li>
+        </ul>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:24px;">
+        <div style="font-size:0.82rem;font-weight:700;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>🏆</span> قوانين قسم الجولات</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>الالتزام بوقت الجولة وعدم تعطيلها.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>يمنع الغش بأي طريقة داخل الجولات.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>البريك للنقاشات الخفيفة باحترام فقط.</li>
+          <li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>العودة فوراً للجولة بعد البريك.</li>
+        </ul>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <button onclick="declineChat()" style="flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);padding:12px;border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.9rem;cursor:pointer;">رجوع</button>
+        <button onclick="acceptChat()" style="flex:2;background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.1));border:1px solid rgba(255,215,0,0.4);color:var(--gold);padding:12px;border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;">✓ فهمت وأوافق — ادخل</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
