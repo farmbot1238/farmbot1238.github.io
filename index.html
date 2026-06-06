@@ -1161,12 +1161,15 @@
       <div class="sidebar-link" data-chat="true" onclick="openChatWithRules(this)">
         <span class="sidebar-link-icon">💬</span> دردشة دراسية
       </div>
-      <!-- أجر وثواب مع طلب إذن الميكروفون أولاً -->
-      <div class="sidebar-link" data-url="https://spiritual-boost.lovable.app" data-title="أجر وثواب" onclick="requestMicrophoneAndOpen(this)">
-        <span class="sidebar-link-icon">🌙</span> أجر وثواب
+      <!-- تلاوات - يفتح في تبويب جديد -->
+      <div class="sidebar-link" data-url-external="https://spiritual-boost.lovable.app/recitations" onclick="openNewTabExternal(this)">
+        <span class="sidebar-link-icon">📖</span> تلاوات
       </div>
       <div class="sidebar-link" data-url="https://anonymous-confessions-space.lovable.app" data-title="أنا مجهول" onclick="loadFrame(this)">
         <span class="sidebar-link-icon">🕵️</span> أنا مجهول
+      </div>
+      <div class="sidebar-link" data-url="https://spiritual-boost.lovable.app" data-title="أجر وثواب" onclick="loadFrame(this)">
+        <span class="sidebar-link-icon">🌙</span> أجر وثواب
       </div>
       <div class="sidebar-link" data-url="https://unified-login-pal.lovable.app" data-title="مشاركة ملفات" onclick="loadFrame(this)">
         <span class="sidebar-link-icon">📁</span> مشاركة ملفات الدراسة
@@ -1402,77 +1405,6 @@
     iframe.onload = null;
     iframe.src = 'about:blank';
     setTimeout(() => { iframe.src = url; }, 10);
-
-    viewer.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-
-    currentTimeout = setTimeout(() => {
-      if (iframe.style.opacity !== '1') {
-        spinner.style.display = 'none';
-        errorBox.style.display = 'flex';
-        errorBox.dataset.url = url;
-        errorBox.dataset.title = title;
-        if (currentTimeout) clearTimeout(currentTimeout);
-        currentTimeout = null;
-      }
-    }, 5000);
-
-    iframe.onload = function() {
-      if (currentTimeout) clearTimeout(currentTimeout);
-      currentTimeout = null;
-      spinner.style.display = 'none';
-      iframe.style.opacity = '1';
-      errorBox.style.display = 'none';
-    };
-  }
-
-  // دالة خاصة لطلب إذن الميكروفون ثم فتح الـ iframe
-  function requestMicrophoneAndOpen(linkEl) {
-    const url = linkEl.getAttribute('data-url');
-    if (!url) return;
-    const title = linkEl.getAttribute('data-title') || 'أجر وثواب';
-    
-    // طلب إذن الميكروفون من المستخدم مباشرة
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(function(stream) {
-        // تم منح الإذن - نوقف الـ tracks (لا نحتاجها لأن الـ iframe سيستخدم الميكروفون)
-        stream.getTracks().forEach(track => track.stop());
-        // الآن نفتح الـ iframe مع تفعيل الميكروفون
-        openMicrophoneIframe(url, title, linkEl);
-      })
-      .catch(function(err) {
-        console.error("Microphone permission error:", err);
-        alert("⚠️ لا يمكن الوصول إلى الميكروفون. يرجى السماح باستخدام الميكروفون ثم حاول مرة أخرى.\nإذا كنت قد رفضت سابقاً، يمكنك تغيير الإعدادات من قفل المتصفح بجوار شريط العنوان.");
-        // مع ذلك يمكن فتح الـ iframe بدون ميكروفون كمحاولة
-        openMicrophoneIframe(url, title, linkEl);
-      });
-  }
-  
-  function openMicrophoneIframe(url, title, linkEl) {
-    closeSidebar();
-    if (currentLink) currentLink.classList.remove('active');
-    linkEl.classList.add('active');
-    currentLink = linkEl;
-
-    const viewer = document.getElementById('fullViewer');
-    const iframe = document.getElementById('mainIframe');
-    const titleEl = document.getElementById('viewerTitle');
-    const spinner = document.getElementById('viewerSpinner');
-    const errorBox = document.getElementById('iframeError');
-
-    titleEl.textContent = title;
-    spinner.style.display = 'block';
-    iframe.style.opacity = '0';
-    errorBox.style.display = 'none';
-    if (currentTimeout) clearTimeout(currentTimeout);
-
-    iframe.onload = null;
-    iframe.src = 'about:blank';
-    setTimeout(() => {
-      iframe.src = url;
-      // السماح بالميكروفون والتشغيل التلقائي والشاشة الكاملة
-      iframe.setAttribute('allow', 'microphone; autoplay; fullscreen');
-    }, 10);
 
     viewer.style.display = 'flex';
     document.body.style.overflow = 'hidden';
