@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://farmbot1238.github.io/">
 <meta property="og:title" content="مدارك جو | أول منصة تعليمية من صنع طالب">
 <meta property="og:description" content="منصة تعليمية مجانية تجمع كل ما يحتاجه الطالب: مواد دراسية، امتحانات وزارية، كتب، تحديات سرعة، ودردشة تعاونية.">
-<meta property="og:image" content="https://g.top4top.io/p_38162d8zk1.png">
+<meta property="og:image" content="https://d.top4top.io/p_3816yfhp01.jpg">
 <meta property="og:site_name" content="مدارك جو">
 
 <!-- Twitter -->
@@ -25,11 +25,11 @@
 <meta property="twitter:url" content="https://farmbot1238.github.io/">
 <meta property="twitter:title" content="مدارك جو | أول منصة تعليمية من صنع طالب">
 <meta property="twitter:description" content="منصة تعليمية مجانية تجمع كل ما يحتاجه الطالب: مواد دراسية، امتحانات وزارية، كتب، تحديات سرعة، ودردشة تعاونية.">
-<meta property="twitter:image" content="https://g.top4top.io/p_38162d8zk1.png">
+<meta property="twitter:image" content="https://d.top4top.io/p_3816yfhp01.jpg">
 
-<!-- Favicon (أيقونة تبويب المتصفح) -->
-<link rel="icon" type="image/png" href="https://g.top4top.io/p_38162d8zk1.png">
-<link rel="apple-touch-icon" href="https://g.top4top.io/p_38162d8zk1.png">
+<!-- Favicon (أيقونة تبويب المتصفح) - تم التحديث -->
+<link rel="icon" type="image/jpeg" href="https://d.top4top.io/p_3816yfhp01.jpg">
+<link rel="apple-touch-icon" href="https://d.top4top.io/p_3816yfhp01.jpg">
 
 <!-- Google Analytics (gtag) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JLP93VX7X"></script>
@@ -56,7 +56,7 @@
     "name": "مدارك جو",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://g.top4top.io/p_38162d8zk1.png"
+      "url": "https://d.top4top.io/p_3816yfhp01.jpg"
     }
   }
 }
@@ -957,6 +957,7 @@
 
 <!-- =================== LANDING PAGE =================== -->
 <div id="landing">
+  <!-- الشعار في الزاوية العلوية اليمنى (يبقى كما هو) -->
   <div class="corner-logo" title="شعار مدارك جو">
     <img src="https://j.top4top.io/p_3809pwg4f1.png" alt="شعار مدارك جو">
   </div>
@@ -1049,7 +1050,6 @@
       <div class="sidebar-link" data-url="https://madarik-exams-hub.lovable.app" data-title="الحس الوزاري" onclick="loadFrame(this)"><span class="sidebar-link-icon">📋</span> الحس الوزاري</div>
       <div class="sidebar-link" data-url-external="https://www.youtube.com/@OSAID123-u2q/shorts" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">▶️</span> صدقة جارية (يوتيوب) ↗</div>
       <div class="sidebar-link" data-url="https://my-achievement-buddy.lovable.app" data-title="الإنجاز" onclick="loadFrame(this)"><span class="sidebar-link-icon">🏆</span> الإنجاز</div>
-      <!-- الدردشة الدراسية تعمل بشكل طبيعي (بدون رسائل إغلاق) -->
       <div class="sidebar-link" data-chat="true" onclick="openChatWithRules(this)"><span class="sidebar-link-icon">💬</span> دردشة دراسية</div>
       <div class="sidebar-link" data-url-external="https://spiritual-boost.lovable.app/recitations" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">📖</span> تلاوات</div>
       <div class="sidebar-link" data-url="https://anonymous-confessions-space.lovable.app" data-title="أنا مجهول" onclick="loadFrame(this)"><span class="sidebar-link-icon">🕵️</span> أنا مجهول</div>
@@ -1224,7 +1224,6 @@
   function openNewTabExternal(linkEl) { const url = linkEl.getAttribute('data-url-external'); if (url) { closeSidebar(); window.open(url, '_blank', 'noopener,noreferrer'); } }
   function copyEmail() { navigator.clipboard.writeText('madrekjo@gmail.com').then(() => alert('تم نسخ البريد الإلكتروني ✓')); closeSidebar(); }
 
-  // Chat functions (normal operation)
   function openChatWithRules(linkEl) {
     closeSidebar();
     const accepted = localStorage.getItem(CHAT_RULES_KEY);
