@@ -5,10 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-3351421535309022">
 <meta name="google-site-verification" content="NT0SMG2FY2Shk66u_xwqFMBBrWqExgPw9BoD6BYgB4E" />
-<title>مدارك جو | صنع طالب 2009</title>
 
-<!-- شعار الموقع (Favicon) -->
-<link rel="icon" type="image/png" href="https://j.top4top.io/p_3809pwg4f1.png">
+<!-- SEO Meta Tags -->
+<title>مدارك جو | أول منصة تعليمية من صنع طالب</title>
+<meta name="title" content="مدارك جو | أول منصة تعليمية من صنع طالب">
+<meta name="description" content="مدارك جو هي منصة تعليمية مجانية أُسست بجهد طالب من جيل 2009، تقدم روابط مختارة لأدوات دراسية، امتحانات وزارية، كتب، تحديات سرعة، ودردشات دراسية تعاونية.">
+<meta name="keywords" content="مدارك جو, منصة تعليمية, طالب 2009, امتحانات وزارية, مواد دراسية, كتب وزارية, تحديات سرعة, دردشة دراسية">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://farmbot1238.github.io/">
+<meta property="og:title" content="مدارك جو | أول منصة تعليمية من صنع طالب">
+<meta property="og:description" content="منصة تعليمية مجانية تجمع كل ما يحتاجه الطالب: مواد دراسية، امتحانات وزارية، كتب، تحديات سرعة، ودردشة تعاونية.">
+<meta property="og:image" content="https://g.top4top.io/p_38162d8zk1.png">
+<meta property="og:site_name" content="مدارك جو">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://farmbot1238.github.io/">
+<meta property="twitter:title" content="مدارك جو | أول منصة تعليمية من صنع طالب">
+<meta property="twitter:description" content="منصة تعليمية مجانية تجمع كل ما يحتاجه الطالب: مواد دراسية، امتحانات وزارية، كتب، تحديات سرعة، ودردشة تعاونية.">
+<meta property="twitter:image" content="https://g.top4top.io/p_38162d8zk1.png">
+
+<!-- Favicon (أيقونة تبويب المتصفح) - تم تحديثها بالرابط الجديد -->
+<link rel="icon" type="image/png" href="https://g.top4top.io/p_38162d8zk1.png">
+<link rel="apple-touch-icon" href="https://g.top4top.io/p_38162d8zk1.png">
 
 <!-- Google Analytics (gtag) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JLP93VX7X"></script>
@@ -21,6 +42,25 @@
 
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3351421535309022" crossorigin="anonymous"></script>
+
+<!-- Structured Data (JSON-LD) لتوجيه محركات البحث -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "مدارك جو",
+  "url": "https://farmbot1238.github.io/",
+  "description": "أول منصة تعليمية من صنع طالب - موارد دراسية مجانية لطلاب جيل 2009",
+  "publisher": {
+    "@type": "Organization",
+    "name": "مدارك جو",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://g.top4top.io/p_38162d8zk1.png"
+    }
+  }
+}
+</script>
 
 <!-- Fonts & Preconnect -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -91,7 +131,7 @@
     position: relative;
   }
 
-  /* الشعار في الزاوية العلوية اليمنى (يظهر فقط في الصفحة الرئيسية) */
+  /* الشعار في الزاوية العلوية اليمنى (يظهر فقط في الصفحة الرئيسية) - يبقى كما هو دون تغيير */
   .corner-logo {
     position: absolute;
     top: 24px;
@@ -715,7 +755,7 @@
   /* العداد التنازلي */
   .countdown-container {
     max-width: 600px;
-    margin: 0 auto 40px;
+    margin: -20px auto 40px;
     text-align: center;
   }
   .countdown-title {
@@ -756,6 +796,80 @@
   @media (max-width: 500px) {
     .countdown-item { min-width: 55px; }
     .countdown-number { font-size: 1.5rem; }
+  }
+
+  /* رسالة الدردشة المخصصة */
+  .chat-message-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .chat-message-modal.show {
+    display: flex;
+  }
+  .chat-message-card {
+    background: linear-gradient(145deg, #111118, #0a0a0f);
+    border: 1px solid rgba(255,215,0,0.4);
+    border-radius: 28px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    padding: 40px 32px;
+    animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .chat-message-card .icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+  }
+  .chat-message-card h3 {
+    color: var(--gold);
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    font-weight: 800;
+  }
+  .chat-message-card p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-size: 1rem;
+  }
+  .chat-message-card .discord-link {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));
+    border: 1px solid rgba(255,215,0,0.4);
+    color: var(--gold);
+    padding: 10px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+  }
+  .chat-message-card .discord-link:hover {
+    background: rgba(255,215,0,0.2);
+    transform: scale(1.02);
+  }
+  .chat-message-card button {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .chat-message-card button:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--gold);
   }
 
   /* Fullscreen Viewer */
@@ -919,7 +1033,7 @@
 
 <!-- =================== LANDING PAGE =================== -->
 <div id="landing">
-  <!-- الشعار في الزاوية العلوية اليمنى (يظهر فقط في الصفحة الرئيسية) -->
+  <!-- الشعار في الزاوية العلوية اليمنى (يظهر فقط في الصفحة الرئيسية) - يبقى كما هو دون تغيير -->
   <div class="corner-logo" title="شعار مدارك جو">
     <img src="https://j.top4top.io/p_3809pwg4f1.png" alt="شعار مدارك جو">
   </div>
@@ -998,6 +1112,17 @@
 <div id="visionModal" class="info-modal"><div class="info-modal-content"><h3>🌟 رؤيتنا</h3><p>نسعى لأن نكون المنصة التعليمية المجانية الأولى للطلاب في الأردن، نقدم محتوى وروابط موثوقة وسهلة الوصول، ونساعد الطلاب على تحقيق أقصى إمكانياتهم دون أي حواجز مالية أو تقنية.</p><button onclick="closeVisionModal()">فهمت</button></div></div>
 <div id="teamModal" class="info-modal"><div class="info-modal-content"><h3>👥 فريق العمل</h3><p>فريق مدارك جو مكون من <strong>طالبين من جيل 2009</strong>، يجمعهم شغف التعليم والتكنولوجيا. نعمل على تطوير المنصة وتحديثها باستمرار لخدمة زملائنا الطلاب.</p><button onclick="closeTeamModal()">فهمت</button></div></div>
 
+<!-- نافذة رسالة الدردشة -->
+<div id="chatClosedModal" class="chat-message-modal">
+  <div class="chat-message-card">
+    <div class="icon">🔒</div>
+    <h3>الدردشة مغلقة حالياً</h3>
+    <p>تم إغلاق قسم الدردشة الدراسية اليوم وسيتم إعادة فتحه غداً.<br>🔹 بالنسبة للطلاب الذين يدرسون ليلاً، يمكنكم الانضمام إلى سيرفر الديسكورد المخصص للمنصة:</p>
+    <a href="https://discord.gg/papmsmsBZ" target="_blank" class="discord-link">انضم إلى ديسكورد مدارك جو →</a>
+    <button onclick="closeChatModal()">فهمت</button>
+  </div>
+</div>
+
 <!-- =================== 2009 PAGE =================== -->
 <div id="page2009">
   <div class="topbar-2009">
@@ -1012,7 +1137,8 @@
       <div class="sidebar-link" data-url="https://madarik-exams-hub.lovable.app" data-title="الحس الوزاري" onclick="loadFrame(this)"><span class="sidebar-link-icon">📋</span> الحس الوزاري</div>
       <div class="sidebar-link" data-url-external="https://www.youtube.com/@OSAID123-u2q/shorts" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">▶️</span> صدقة جارية (يوتيوب) ↗</div>
       <div class="sidebar-link" data-url="https://my-achievement-buddy.lovable.app" data-title="الإنجاز" onclick="loadFrame(this)"><span class="sidebar-link-icon">🏆</span> الإنجاز</div>
-      <div class="sidebar-link" data-chat="true" onclick="openChatWithRules(this)"><span class="sidebar-link-icon">💬</span> دردشة دراسية</div>
+      <!-- قسم الدردشة - يظهر رسالة أنه مغلق اليوم -->
+      <div class="sidebar-link" onclick="showChatClosedMessage()"><span class="sidebar-link-icon">💬</span> دردشة دراسية (مغلق اليوم)</div>
       <div class="sidebar-link" data-url-external="https://spiritual-boost.lovable.app/recitations" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">📖</span> تلاوات</div>
       <div class="sidebar-link" data-url="https://anonymous-confessions-space.lovable.app" data-title="أنا مجهول" onclick="loadFrame(this)"><span class="sidebar-link-icon">🕵️</span> أنا مجهول</div>
       <div class="sidebar-link" data-url="https://spiritual-boost.lovable.app" data-title="أجر وثواب" onclick="loadFrame(this)"><span class="sidebar-link-icon">🌙</span> أجر وثواب</div>
@@ -1082,7 +1208,6 @@
 
   // Storage keys
   const STORAGE_KEY = 'madarik_selected_year';
-  const CHAT_RULES_KEY = 'madarik_chat_rules_accepted';
 
   // Functions
   function toggleFaq(el) { el.classList.toggle('open'); }
@@ -1120,6 +1245,14 @@
   function closeModal(e) { if (e.target.id === 'constructionModal') document.getElementById('constructionModal').classList.remove('show'); }
   function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
   function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('show'); }
+  
+  // رسالة الدردشة المغلقة
+  function showChatClosedMessage() {
+    document.getElementById('chatClosedModal').classList.add('show');
+  }
+  function closeChatModal() {
+    document.getElementById('chatClosedModal').classList.remove('show');
+  }
 
   let preloadIframeInstance = null;
   function initPreloadIframe() {
@@ -1188,57 +1321,9 @@
   function openNewTabExternal(linkEl) { const url = linkEl.getAttribute('data-url-external'); if (url) { closeSidebar(); window.open(url, '_blank', 'noopener,noreferrer'); } }
   function copyEmail() { navigator.clipboard.writeText('madrekjo@gmail.com').then(() => alert('تم نسخ البريد الإلكتروني ✓')); closeSidebar(); }
 
-  function openChatWithRules(linkEl) {
-    closeSidebar();
-    const accepted = localStorage.getItem(CHAT_RULES_KEY);
-    if (accepted === 'true') { loadFrameFromUrlAndTitle('https://cooperate-and-conquer.lovable.app', 'دردشة دراسية', linkEl); return; }
-    pendingChatLink = linkEl;
-    document.getElementById('chatRulesModal').style.display = 'flex';
-  }
-  function loadFrameFromUrlAndTitle(url, title, linkEl) {
-    if (!linkEl) return;
-    if (currentLink) currentLink.classList.remove('active');
-    linkEl.classList.add('active');
-    currentLink = linkEl;
-    const viewer = document.getElementById('fullViewer');
-    const iframe = document.getElementById('mainIframe');
-    const titleEl = document.getElementById('viewerTitle');
-    const spinner = document.getElementById('viewerSpinner');
-    const errorBox = document.getElementById('iframeError');
-    titleEl.textContent = title;
-    spinner.style.display = 'block';
-    iframe.style.opacity = '0';
-    errorBox.style.display = 'none';
-    if (currentTimeout) clearTimeout(currentTimeout);
-    iframe.onload = null;
-    iframe.src = 'about:blank';
-    setTimeout(() => { iframe.src = url; }, 10);
-    viewer.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    currentTimeout = setTimeout(() => {
-      if (iframe.style.opacity !== '1') {
-        spinner.style.display = 'none';
-        errorBox.style.display = 'flex';
-        errorBox.dataset.url = url;
-        errorBox.dataset.title = title;
-        clearTimeout(currentTimeout); currentTimeout = null;
-      }
-    }, 5000);
-    iframe.onload = () => {
-      if (currentTimeout) clearTimeout(currentTimeout);
-      currentTimeout = null;
-      spinner.style.display = 'none';
-      iframe.style.opacity = '1';
-      errorBox.style.display = 'none';
-    };
-  }
-  let pendingChatLink = null;
-  function acceptChat() { localStorage.setItem(CHAT_RULES_KEY, 'true'); document.getElementById('chatRulesModal').style.display = 'none'; if (pendingChatLink) { loadFrameFromUrlAndTitle('https://cooperate-and-conquer.lovable.app', 'دردشة دراسية', pendingChatLink); pendingChatLink = null; } }
-  function declineChat() { document.getElementById('chatRulesModal').style.display = 'none'; pendingChatLink = null; }
-
   // Countdown timer
   function updateCountdown() {
-    const targetDate = new Date(2026, 6, 23, 0, 0, 0); // July 23, 2026 (month index 6)
+    const targetDate = new Date(2026, 6, 23, 0, 0, 0);
     const now = new Date();
     const diff = targetDate - now;
     if (diff <= 0) {
@@ -1246,7 +1331,8 @@
       document.getElementById('hours').innerText = '00';
       document.getElementById('minutes').innerText = '00';
       document.getElementById('seconds').innerText = '00';
-      document.querySelector('.countdown-title').innerText = '🎉 انطلق الامتحان! 🎉';
+      const titleEl = document.querySelector('.countdown-title');
+      if (titleEl) titleEl.innerText = '🎉 انطلق الامتحان! 🎉';
       return;
     }
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -1263,8 +1349,5 @@
 
   window.addEventListener('DOMContentLoaded', () => { initPreloadIframe(); checkStoredYearAndRedirect(); const firstPrefetch = document.querySelector('#sidebar .sidebar-link[data-url]'); if (firstPrefetch && firstPrefetch.getAttribute('data-url')) prefetchIframe(firstPrefetch.getAttribute('data-url')); });
 </script>
-
-<!-- Chat Rules Modal -->
-<div id="chatRulesModal" style="display:none;position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;"><div style="background:var(--surface);border:1px solid rgba(255,215,0,0.25);border-radius:24px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;"><div style="height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:24px 24px 0 0;"></div><div style="padding:28px 28px 24px;"><div style="text-align:center;margin-bottom:24px;"><div style="font-size:2.8rem;margin-bottom:10px;">⚖️</div><div style="font-family:'Tajawal',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">قوانين الدردشة الدراسية</div><div style="font-size:0.8rem;color:var(--muted);margin-top:6px;">اقرأ القوانين قبل الدخول</div></div><div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:14px;"><div style="font-size:0.82rem;font-weight:700;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>💬</span> قوانين قسم الشات</div><ul style="list-style:none;display:flex;flex-direction:column;gap:9px;"><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع منعًا باتًا استخدام الشات للأحاديث الجانبية.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>الشات للأسئلة والاستفسارات الدراسية فقط.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع افتعال المشاكل أو النقاشات الاستفزازية.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يجب احترام جميع الأعضاء والمشرفين.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع نشر محتوى غير مناسب أو روابط عشوائية.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يمنع إرسال الرسائل المتكررة (Spam).</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#ef4444;flex-shrink:0;">•</span>يُمنع انتحال شخصية أي عضو أو مشرف.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:#fca5a5;line-height:1.5;font-weight:600;"><span style="color:#ef4444;flex-shrink:0;">•</span>أي مخالفة قد تؤدي إلى تحذير، تايم اوت، أو حظر.</li></ul></div><div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:24px;"><div style="font-size:0.82rem;font-weight:700;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span>🏆</span> قوانين قسم الجولات</div><ul style="list-style:none;display:flex;flex-direction:column;gap:9px;"><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>الالتزام بوقت الجولة وعدم تعطيلها.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>يمنع الغش بأي طريقة داخل الجولات.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>البريك للنقاشات الخفيفة باحترام فقط.</li><li style="display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.5;"><span style="color:#f59e0b;flex-shrink:0;">•</span>العودة فوراً للجولة بعد البريك.</li></ul></div><div style="display:flex;gap:12px;"><button onclick="declineChat()" style="flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);padding:12px;border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.9rem;cursor:pointer;">رجوع</button><button onclick="acceptChat()" style="flex:2;background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,215,0,0.1));border:1px solid rgba(255,215,0,0.4);color:var(--gold);padding:12px;border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;">✓ فهمت وأوافق — ادخل</button></div></div></div></div>
 </body>
 </html>
