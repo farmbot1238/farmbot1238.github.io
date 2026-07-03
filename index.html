@@ -1079,8 +1079,8 @@
       <div class="footer-grid">
         <div class="footer-col"><h4>✨ عن مدارك جو</h4><ul><li><a onclick="scrollToSection('about-section')">من نحن</a></li><li><a onclick="scrollToSection('faq-section')">الأسئلة الشائعة</a></li><li><a onclick="showVisionModal()">رؤيتنا</a></li><li><a onclick="showTeamModal()">فريق العمل</a></li></ul></div>
         <div class="footer-col"><h4>📚 خدماتنا</h4><ul><li><a onclick="selectYear('2009')">منصة 2009</a></li><li><a href="#">المواد الدراسية</a></li><li><a href="#">الامتحانات الوزارية</a></li><li><a href="#">تحديات السرعة</a></li><li><a href="#">الدردشة الدراسية</a></li></ul></div>
-        <div class="footer-col"><h4>🔗 روابط سريعة</h4><ul><li><a onclick="scrollToSection('year-section')">اختر جيلك</a></li><li><a onclick="copyEmail()">البريد الإلكتروني</a></li><li><a onclick="window.open('https://discord.gg/papmsmsBZ','_blank')">سيرفر ديسكورد</a></li><li><a onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeOP7ow84vcJ-q8tm4YlHsKMCuGdoL-E5OCJw6C66PDrbMpWw/viewform','_blank')">نموذج الاقتراحات</a></li></ul></div>
-        <div class="footer-col"><h4>📬 تواصل معنا</h4><ul><li><a href="mailto:madrekjo@gmail.com">madrekjo@gmail.com</a></li><li><a onclick="window.open('https://discord.gg/papmsmsBZ','_blank')">ديسكورد</a></li></ul><div class="social-icons"><a href="#">🐦</a><a href="#">📸</a><a href="#">▶️</a></div></div>
+        <div class="footer-col"><h4>🔗 روابط سريعة</h4><ul><li><a onclick="scrollToSection('year-section')">اختر جيلك</a></li><li><a onclick="copyEmail()">البريد الإلكتروني</a></li><li><a onclick="window.open('https://discord.gg/ps3MZRTGP','_blank')">سيرفر ديسكورد</a></li><li><a onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeOP7ow84vcJ-q8tm4YlHsKMCuGdoL-E5OCJw6C66PDrbMpWw/viewform','_blank')">نموذج الاقتراحات</a></li></ul></div>
+        <div class="footer-col"><h4>📬 تواصل معنا</h4><ul><li><a href="mailto:madrekjo@gmail.com">madrekjo@gmail.com</a></li><li><a onclick="window.open('https://discord.gg/ps3MZRTGP','_blank')">ديسكورد</a></li></ul><div class="social-icons"><a href="#">🐦</a><a href="#">📸</a><a href="#">▶️</a></div></div>
       </div>
       <div class="footer-bottom-links"><a onclick="scrollToSection('about-section')">من نحن</a><a onclick="scrollToSection('faq-section')">الأسئلة الشائعة</a><a href="#">الشروط والأحكام</a><a href="#">الخصوصية</a><a onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeOP7ow84vcJ-q8tm4YlHsKMCuGdoL-E5OCJw6C66PDrbMpWw/viewform','_blank')">اقتراحات</a><a onclick="copyEmail()">اتصل بنا</a></div>
       <div class="footer-copyright">© 2026 مدارك جو — صنع بواسطة طالبين من جيل 2009. كل الحقوق محفوظة.</div>
@@ -1123,7 +1123,7 @@
       <div class="sidebar-link" data-url="https://anonymous-confessions-space.lovable.app" data-title="أنا مجهول" onclick="loadFrame(this)"><span class="sidebar-link-icon">🕵️</span> أنا مجهول</div>
       <div class="sidebar-link" data-url="https://spiritual-boost.lovable.app" data-title="أجر وثواب" onclick="loadFrame(this)"><span class="sidebar-link-icon">🌙</span> أجر وثواب</div>
       <div class="sidebar-link" data-url="https://unified-login-pal.lovable.app" data-title="مشاركة ملفات" onclick="loadFrame(this)"><span class="sidebar-link-icon">📁</span> مشاركة ملفات الدراسة</div>
-      <div class="sidebar-link" data-url-external="https://discord.gg/papmsmsBZ" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">🎮</span> سيرفر ديسكورد ↗</div>
+      <div class="sidebar-link" data-url-external="https://discord.gg/ps3MZRTGP" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">🎮</span> سيرفر ديسكورد ↗</div>
       <div class="sidebar-link" data-url-external="https://www.youtube.com/@Pyabd/posts" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">📢</span> تحديثات الموقع ↗</div>
       <div class="sidebar-link" data-url-external="https://notebooklm.google.com/notebook/20623484-45c7-4f42-9421-655b2b3d2e0d" onclick="openNewTabExternal(this)"><span class="sidebar-link-icon">📓</span> NoteBookLM ↗</div>
       <div class="sidebar-link" data-url="https://farmbot1238.github.io/timer/" data-title="مؤقت" onclick="loadFrame(this)"><span class="sidebar-link-icon">⏱️</span> مؤقت (Timer)</div>
@@ -1188,11 +1188,18 @@
 
   const STORAGE_KEY = 'madarik_selected_year';
 
+  // ================== CORE FUNCTIONS ==================
   function toggleFaq(el) { el.classList.toggle('open'); }
+
   function selectYear(year) {
-    if (year === '2009') { localStorage.setItem(STORAGE_KEY, '2009'); go2009(); }
-    else if (year === '2010') { show2010Modal(); }
+    if (year === '2009') {
+      localStorage.setItem(STORAGE_KEY, '2009');
+      go2009();
+    } else if (year === '2010') {
+      show2010Modal();
+    }
   }
+
   function go2009() {
     document.getElementById('landing').style.display = 'none';
     document.getElementById('page2009').classList.add('active');
@@ -1202,29 +1209,50 @@
       if (firstLink && firstLink.getAttribute('data-url')) prefetchIframe(firstLink.getAttribute('data-url'));
     }, 500);
   }
+
   function goBackToLanding() {
     document.getElementById('page2009').classList.remove('active');
     document.getElementById('landing').style.display = 'flex';
-    closeSidebar(); closeViewer();
+    closeSidebar();
+    closeViewer();
     window.scrollTo(0, 0);
   }
-  function resetYearAndGoBack() { localStorage.removeItem(STORAGE_KEY); goBackToLanding(); }
-  function checkStoredYearAndRedirect() { if (localStorage.getItem(STORAGE_KEY) === '2009') go2009(); }
+
+  function resetYearAndGoBack() {
+    localStorage.removeItem(STORAGE_KEY);
+    goBackToLanding();
+  }
+
+  function checkStoredYearAndRedirect() {
+    if (localStorage.getItem(STORAGE_KEY) === '2009') go2009();
+  }
+
   function scrollToSection(sectionId) {
     const landing = document.getElementById('landing');
     if (landing.style.display !== 'flex') goBackToLanding();
-    setTimeout(() => { const el = document.getElementById(sectionId); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 100);
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   }
+
   function showVisionModal() { document.getElementById('visionModal').classList.add('show'); }
   function closeVisionModal() { document.getElementById('visionModal').classList.remove('show'); }
   function showTeamModal() { document.getElementById('teamModal').classList.add('show'); }
   function closeTeamModal() { document.getElementById('teamModal').classList.remove('show'); }
   function show2010Modal() { document.getElementById('constructionModal').classList.add('show'); }
   function closeModal(e) { if (e.target.id === 'constructionModal') document.getElementById('constructionModal').classList.remove('show'); }
-  function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
-  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebarOverlay').classList.remove('show'); }
 
-  // نافذة إلغاء تنشيط الدردشة
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('show');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+  }
+
+  // Chat disabled modal
   function showChatDisabledModal() {
     document.getElementById('chatDisabledModal').classList.add('show');
   }
@@ -1232,6 +1260,7 @@
     document.getElementById('chatDisabledModal').classList.remove('show');
   }
 
+  // Preload iframe
   let preloadIframeInstance = null;
   function initPreloadIframe() {
     if (preloadIframeInstance) return;
@@ -1240,8 +1269,13 @@
     preloadIframeInstance.setAttribute('sandbox', 'allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-modals');
     document.body.appendChild(preloadIframeInstance);
   }
-  function prefetchIframe(url) { if (!url) return; initPreloadIframe(); if (preloadIframeInstance.src !== url) preloadIframeInstance.src = url; }
+  function prefetchIframe(url) {
+    if (!url) return;
+    initPreloadIframe();
+    if (preloadIframeInstance.src !== url) preloadIframeInstance.src = url;
+  }
 
+  // Load frame
   let currentLink = null, currentTimeout = null;
   function loadFrame(linkEl) {
     const url = linkEl.getAttribute('data-url');
@@ -1251,31 +1285,38 @@
     if (currentLink) currentLink.classList.remove('active');
     linkEl.classList.add('active');
     currentLink = linkEl;
+
     const viewer = document.getElementById('fullViewer');
     const iframe = document.getElementById('mainIframe');
     const titleEl = document.getElementById('viewerTitle');
     const spinner = document.getElementById('viewerSpinner');
     const errorBox = document.getElementById('iframeError');
+
     titleEl.textContent = title;
     spinner.style.display = 'block';
     iframe.style.opacity = '0';
     errorBox.style.display = 'none';
     if (currentTimeout) clearTimeout(currentTimeout);
+
     iframe.onload = null;
     iframe.src = 'about:blank';
     setTimeout(() => { iframe.src = url; }, 10);
+
     viewer.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+
     currentTimeout = setTimeout(() => {
       if (iframe.style.opacity !== '1') {
         spinner.style.display = 'none';
         errorBox.style.display = 'flex';
         errorBox.dataset.url = url;
         errorBox.dataset.title = title;
-        clearTimeout(currentTimeout); currentTimeout = null;
+        clearTimeout(currentTimeout);
+        currentTimeout = null;
       }
     }, 5000);
-    iframe.onload = () => {
+
+    iframe.onload = function() {
       if (currentTimeout) clearTimeout(currentTimeout);
       currentTimeout = null;
       spinner.style.display = 'none';
@@ -1283,7 +1324,12 @@
       errorBox.style.display = 'none';
     };
   }
-  function openInNewTabFromError() { const err = document.getElementById('iframeError'); if (err.dataset.url) window.open(err.dataset.url, '_blank', 'noopener,noreferrer'); }
+
+  function openInNewTabFromError() {
+    const err = document.getElementById('iframeError');
+    if (err.dataset.url) window.open(err.dataset.url, '_blank', 'noopener,noreferrer');
+  }
+
   function closeViewer() {
     if (currentTimeout) clearTimeout(currentTimeout);
     const viewer = document.getElementById('fullViewer');
@@ -1296,8 +1342,19 @@
     document.body.style.overflow = '';
     if (currentLink) { currentLink.classList.remove('active'); currentLink = null; }
   }
-  function openNewTabExternal(linkEl) { const url = linkEl.getAttribute('data-url-external'); if (url) { closeSidebar(); window.open(url, '_blank', 'noopener,noreferrer'); } }
-  function copyEmail() { navigator.clipboard.writeText('madrekjo@gmail.com').then(() => alert('تم نسخ البريد الإلكتروني ✓')); closeSidebar(); }
+
+  function openNewTabExternal(linkEl) {
+    const url = linkEl.getAttribute('data-url-external');
+    if (url) {
+      closeSidebar();
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  function copyEmail() {
+    navigator.clipboard.writeText('madrekjo@gmail.com').then(() => alert('تم نسخ البريد الإلكتروني ✓'));
+    closeSidebar();
+  }
 
   // Countdown timer
   function updateCountdown() {
@@ -1325,7 +1382,15 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  window.addEventListener('DOMContentLoaded', () => { initPreloadIframe(); checkStoredYearAndRedirect(); const firstPrefetch = document.querySelector('#sidebar .sidebar-link[data-url]'); if (firstPrefetch && firstPrefetch.getAttribute('data-url')) prefetchIframe(firstPrefetch.getAttribute('data-url')); });
+  // Initialize
+  window.addEventListener('DOMContentLoaded', function() {
+    initPreloadIframe();
+    checkStoredYearAndRedirect();
+    const firstPrefetch = document.querySelector('#sidebar .sidebar-link[data-url]');
+    if (firstPrefetch && firstPrefetch.getAttribute('data-url')) {
+      prefetchIframe(firstPrefetch.getAttribute('data-url'));
+    }
+  });
 </script>
 </body>
 </html>
